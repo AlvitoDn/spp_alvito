@@ -12,8 +12,8 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+        <a class="nav-link" href="/">
+            <i class="fas fa-fw fa-home"></i>
             <span>Dashboard</span></a>
     </li>
 
@@ -28,13 +28,13 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Master</span>
+            <i class="fas fa-fw fa-users"></i>
+            <span>Users</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Pengguna</h6>
                 <a class="collapse-item" href="/siswa">Siswa</a>
-                <a class="collapse-item" href="/jenisbayar">Jenis Bayar</a>
                 <a class="collapse-item" href="/petugas">Petugas</a>
             </div>
         </div>
@@ -43,12 +43,13 @@
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-comment-dollar"></i>
             <span>Transaksi</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Transaksi</h6>
+                <a class="collapse-item" href="/jenisbayar">Jenis Pembayaran</a>
                 <a class="collapse-item" href="/bayar">Pembayaran SPP</a>
             </div>
         </div>

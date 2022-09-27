@@ -36,6 +36,10 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('/petugas', 'Petugas::index');
+$routes->get('/fpetugas','Petugas::fpetugas');
+$routes->add('/spetugas','Petugas::save');
+$routes->get('/petugas/delete/(:segment)','Petugas::delete/$1');
 
 /*
  * --------------------------------------------------------------------
