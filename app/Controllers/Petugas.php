@@ -4,16 +4,16 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\PetugasModel;
 class Petugas extends BaseController{
-    protected $petugas;
+    protected $petugass;
 
     function __construct()
     {
-        $this->petugas = new PetugasModel();
+        $this->petugass = new PetugasModel();
     }
 
     public function index ()
     {
-        $data['petugas'] = $this->petugas->findAll();
+        $data['petugas'] = $this->petugass->findAll();
         return view('tampil_petugas',$data);
     }
 
@@ -24,7 +24,7 @@ class Petugas extends BaseController{
 
     public function save()
     {
-        $this->petugas->insert([
+        $this->petugass->insert([
             'nama_petugas'=>$this->request->getPost('nama_petugas'),
             'username'=>$this->request->getPost('username'),
             'password'=>password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
@@ -37,7 +37,7 @@ class Petugas extends BaseController{
     }
     public function delete($id)
     {
-        $this->petugas->delete($id);
+        $this->petugass->delete($id);
         session()->setFlashdata('message','Data Petugas Berhasil Dihapus');
         return redirect('petugas');
     }
