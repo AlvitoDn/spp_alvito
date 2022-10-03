@@ -74,7 +74,7 @@ Petugas
                             </div>
                             <div class="form-group">
                                 <label for="jabatan" class="form-label">Jabatan</label>
-                                <select name="jabatan" id="jabatan" class="form-control">
+                                <select name="jabatan" id="jabatan" class="form-control" required>
                                     <option value="">Pilih Jabatan</option>
                                     <option value="KEPALA SEKOLAH">Kepala Sekolah</option>
                                     <option value="WALI KELAS">Wali Kelas</option>
@@ -83,11 +83,15 @@ Petugas
                             </div>
                             <div class="form-group">
                                 <label for="hak_akses" class="form-label">Hak Akses</label>
-                                <select name="hak_akses" id="hak_akses" class="form-control">
+                                <select name="hak_akses" id="hak_akses" class="form-control" required>
                                     <option value="">Pilih Hak Akses Anda</option>
                                     <option value="ADMIN">ADMIN</option>
                                     <option value="KASIR">KASIR</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ubahpassword">Ubah Password</label>
+                                <input type="checkbox" id="ubahpassword" name="ubahpassword" class="form-control">
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -99,15 +103,15 @@ Petugas
             </div>
         </div>
     </div>
+    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+    
+        <div class="alert alert-success">
+            <?php echo session()->getFlashdata('message'); ?>
+        </div>
+    
+    <?php endif ?>
 </div>
 </div>
-<?php if (!empty(session()->getFlashdata('message'))) : ?>
-
-    <div class="alert alert-success">
-        <?php echo session()->getFlashdata('message'); ?>
-    </div>
-
-<?php endif ?>
 <?= $this->endSection() ?>
 <?= $this->section("script") ?>
 <script>
