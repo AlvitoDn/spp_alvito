@@ -7,7 +7,7 @@ Petugas
     <div class="col">
         <div class="card border-primary">
             <div class="card-header bg-primary">
-                <a href="#" class="btn btn-outline-light" data-target="ModalPetugas"><i class="fas fa-solid fa-user-plus"></i> Tambah Petugas</a>
+                <a href="#" class="btn btn-outline-light" data-petugas="" data-target="#ModalPetugas" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Petugas</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -24,7 +24,7 @@ Petugas
                     <?php
                     $no = 0;
                     foreach ($petugas as $row) {
-                        $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] . base_url('petugas/edit/' . $row['id_petugas']);
+                        $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] .",". base_url('petugas/edit/' . $row['id_petugas']);
                         $no++;
                     ?>
                         <tr>
@@ -49,53 +49,53 @@ Petugas
         <div class="modal fade" id="ModalPetugas" tab-index="-1" aria-hidden="true" aria-labelledby="ModalPetugasLabel">
             <div class="modal-dialog">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Input Data Petugas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                        <span aria-hidden="true">&times;</span>
+                    </div>
                     <form id="form" action="" method="post">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exmpaleModalLabel">Input data Petugas</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="close"></button>
-                            <span aria-hidden="true">&times;</span>
-                        </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="nama" class="form-label">Nama</label>
-                                <input type="text" name="nama" id="nama" class="form-control">
+                                <label for="nama_petugas" class="form-label">Nama Lengkap</label>
+                                <input type="text" name="nama_petugas" id="nama_petugas" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="form-label">PASSWORD</label>
+                                <label for="password" class="form-label">Password</label>
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="no_hp" class="form-label">NO HP</label>
+                                <label for="no_hp" class="form-label">Nomor Hp</label>
                                 <input type="number" name="no_hp" id="no_hp" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="jabatan" class="form-label">Jabatan</label>
                                 <select name="jabatan" id="jabatan" class="form-control">
-                                    <option value="">Pilih jabatan</option>
-                                    <option value="KEPALA SEKOLAH">KEPALA SEKOLAH</option>
-                                    <option value="WALI KELAS">WALI KELAS</option>
-                                    <option value="TELLER">TELLER</option>
+                                    <option value="">Pilih Jabatan</option>
+                                    <option value="KEPALA SEKOLAH">Kepala Sekolah</option>
+                                    <option value="WALI KELAS">Wali Kelas</option>
+                                    <option value="TELLER">Teller</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="hak_akses" class="form-label">Hak Akses</label>
                                 <select name="hak_akses" id="hak_akses" class="form-control">
-                                    <option value="">Pilih Hak Akses</option>
+                                    <option value="">Pilih Hak Akses Anda</option>
                                     <option value="ADMIN">ADMIN</option>
                                     <option value="KASIR">KASIR</option>
                                 </select>
                             </div>
-                        </div><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
+                            <a href="/petugas" class="btn btn-secondary"><i class="fas fa-solid fa-arrow-left"></i></a>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="/petugas" class="btn btn-secondary">Close</a>
-                </div>
-                </form>
             </div>
         </div>
     </div>
@@ -118,14 +118,14 @@ Petugas
             alert(data);
             if (data != "") {
                 const barisdata = data.split(",");
-                $("#nama").val(barisdata[1]);
+                $("#nama_petugas").val(barisdata[1]);
                 $("#username").val(barisdata[2]);
-                $("#no_hp").val(barisdata[3]);
-                $("#jabatan").val(barisdata[4]).change();
-                $("#hak_akses").val(barisdata[5]).change();
-                $("#form").attr('action', barisdata[6]);
+                $("#no_hp").val(barisdata[4]);
+                $("#jabatan").val(barisdata[5]).change();
+                $("#hak_akses").val(barisdata[6]).change();
+                $("#form").attr('action', barisdata[7]);
             } else {
-                $("#nama").val('');
+                $("#nama_petugas").val('');
                 $("#username").val('');
                 $("#password").val('');
                 $("#no_hp").val('');
