@@ -131,7 +131,7 @@ Petugas
                 $("#no_hp").val('');
                 $("#jabatan").val('').change();
                 $("#hak_akses").val('').change();
-                $("#form").attr('action', '/spetugas');
+                $("#form").attr('action','/spetugas');
             }
         });
     })

@@ -17,11 +17,6 @@ class Petugas extends BaseController{
         return view('tampil_petugas',$data);
     }
 
-    public function fpetugas()
-    {
-        return view('fpetugas');
-    }
-
     public function save()
     {
         $this->petugass->insert([
