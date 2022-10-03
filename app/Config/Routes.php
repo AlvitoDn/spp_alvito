@@ -40,6 +40,7 @@ $routes->get('/petugas', 'Petugas::index');
 $routes->get('/fpetugas','Petugas::fpetugas');
 $routes->add('/spetugas','Petugas::save');
 $routes->get('/petugas/delete/(:segment)','Petugas::delete/$1');
+$routes->add('/petugas/edit/(:segment)','Petugas::edit/$1');
 
 /*
  * --------------------------------------------------------------------

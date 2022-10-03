@@ -27,8 +27,13 @@ Form Petugas
             </div>
             <div class="form-group">
                 <label for="jabatan" class="form-label">Jabatan</label>
-                <input type="text" name="jabatan" id="jabatan" class="form-control">
-            </div><br>
+                <select name="jabatan" id="jabatan" class="form-control">
+                    <option value="">Pilih Jabatan</option>
+                    <option value="KEPALA SEKOLAH">Kepala Sekolah</option>
+                    <option value="WALI KELAS">Wali Kelas</option>
+                    <option value="TELLER">Teller</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="hak_akses" class="form-label">Hak Akses</label>
                 <select name="hak_akses" id="hak_akses" class="form-control">
