@@ -36,11 +36,18 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+// ROUTES FOR PETUGAS
 $routes->get('/petugas', 'Petugas::index');
-$routes->get('/fpetugas','Petugas::fpetugas');
-$routes->add('/spetugas','Petugas::save');
 $routes->get('/petugas/delete/(:segment)','Petugas::delete/$1');
+$routes->add('/spetugas','Petugas::save');
 $routes->add('/petugas/edit/(:segment)','Petugas::edit/$1');
+
+// ROUTES FOR SISWA
+$routes->get('/siswa','Siswa::index');
+$routes->get('/siswa/delete/(:segment)','Siswa::delete/$1');
+$routes->add('/ssiswa','Siswa::save');
+$routes->add('/siswa/edit/(:segment)','Siswa::edit/$1');
 
 /*
  * --------------------------------------------------------------------

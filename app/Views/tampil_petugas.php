@@ -1,13 +1,13 @@
 <?= $this->extend('layouts/admin') ?>
 <?= $this->section('title') ?>
-Petugas
+<i class="fas fa-solid fa-user-police"></i>Petugas
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="row">
     <div class="col">
         <div class="card border-primary">
             <div class="card-header bg-primary">
-                <a href="#" class="btn btn-outline-light" data-petugas="" data-target="#ModalPetugas" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Petugas</a>
+                <a href="#" class="btn btn-outline-light" data-petugas="" data-target="#ModalPetugas" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Data Petugas</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -24,7 +24,7 @@ Petugas
                     <?php
                     $no = 0;
                     foreach ($petugas as $row) {
-                        $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] .",". base_url('petugas/edit/' . $row['id_petugas']);
+                        $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] . "," . base_url('petugas/edit/' . $row['id_petugas']);
                         $no++;
                     ?>
                         <tr>
@@ -37,7 +37,7 @@ Petugas
                             <td><?= $row['hak_akses'] ?></td>
                             <td>
                                 <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#ModalPetugas" data-petugas="<?= $data ?>"><i class="fas fa-edit"></i></a>
-                                <a href="<?= base_url('petugas/delete/' . $row['id_petugas']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i> Hapus</a>
+                                <a href="<?= base_url('petugas/delete/' . $row['id_petugas']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php
@@ -96,21 +96,21 @@ Petugas
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
-                            <a href="/petugas" class="btn btn-secondary"><i class="fas fa-solid fa-arrow-left"></i></a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-solid fa-arrow-left"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <?php if (!empty(session()->getFlashdata('message'))) : ?>
-    
-        <div class="alert alert-success">
-            <?php echo session()->getFlashdata('message'); ?>
-        </div>
-    
-    <?php endif ?>
 </div>
+<?php if (!empty(session()->getFlashdata('message'))) : ?>
+
+<div class="alert alert-success">
+    <?php echo session()->getFlashdata('message'); ?>
+</div>
+
+<?php endif ?>
 </div>
 <?= $this->endSection() ?>
 <?= $this->section("script") ?>
@@ -119,7 +119,6 @@ Petugas
         $("#ModalPetugas").on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
             var data = button.data('petugas');
-            alert(data);
             if (data != "") {
                 const barisdata = data.split(",");
                 $("#nama_petugas").val(barisdata[1]);
@@ -135,7 +134,7 @@ Petugas
                 $("#no_hp").val('');
                 $("#jabatan").val('').change();
                 $("#hak_akses").val('').change();
-                $("#form").attr('action','/spetugas');
+                $("#form").attr('action', '/spetugas');
             }
         });
     })
