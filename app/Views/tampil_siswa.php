@@ -10,7 +10,7 @@
                 <a href="#" class="btn btn-outline-light" data-siswa="" data-target="#ModalSiswa" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i>Tambah Data Siswa</a>
             </div>
             <div class="card-body">
-                <table class="tbl tbl-bordered tbl-striped">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>NO.</th>
                         <th>Nama Siswa</th>
@@ -147,4 +147,3 @@
     })
 </script>
 <?= $this->endSection() ?>
-<?=$this->endSection()?>
