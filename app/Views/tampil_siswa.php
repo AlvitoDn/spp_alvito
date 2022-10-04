@@ -1,6 +1,6 @@
 <?= $this->extend('layouts/admin') ?>
 <?= $this->section('title') ?>
-<i class="fas fa-solid fa-user-graduate"></i>SISWA
+<b></b><i class="fas fa-solid fa-user-graduate"></i>Siswa
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="row">
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label for="kelas" class="form-label">Kelas</label>
                                 <select name="kelas" id="kelas" class="form-control" required>
-                                    <option value="">==> Pilih Kelas Anda <==< /option>
+                                    <option value="">==> Pilih Kelas Anda</option>
                                     <option value="XII RPL 1">XII RPL 1</option>
                                     <option value="XII RPL 2">XII RPL 2</option>
                                     <option value="XII MM 1">XII MM 1</option>
@@ -96,7 +96,7 @@
                             <div class="form-group">
                                 <label for="jk" class="form-label">Jenis Kelamin</label>
                                 <select name="jk" id="jk" class="form-control" required>
-                                    <option value="">==> Pilih Jenis Kelamin Anda <==</option>
+                                    <option value="">==> Pilih Jenis Kelamin Anda</option>
                                     <option value="L">Laki - Laki</option>
                                     <option value="P">Perempuan</option>
                                 </select>
@@ -127,13 +127,13 @@
             var data = button.data('siswa');
             if (data != "") {
                 const barisdata = data.split(",");
-                $("#nama_siswa").val(barisdata[1]);
-                $("#nis").val(barisdata[2]);
-                $("#kelas").val(barisdata[4]).change();
-                $("#tahun_masuk").val(barisdata[5]);
-                $("#no_rek").val(barisdata[6]);
-                $("#jk").val(barisdata[7]).change();
-                $("#form").attr('action', barisdata[8]);
+                $("#nama_siswa").val(barisdata[0]);
+                $("#nis").val(barisdata[1]);
+                $("#kelas").val(barisdata[2]).change();
+                $("#tahun_masuk").val(barisdata[3]);
+                $("#no_rek").val(barisdata[4]);
+                $("#jk").val(barisdata[5]).change();
+                $("#form").attr('action', barisdata[6]);
             } else {
                 $("#nama_siswa").val('');
                 $("#nis").val('');
