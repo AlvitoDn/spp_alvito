@@ -1,8 +1,8 @@
-<?=$this->extend('layouts/admin')?>
-<?=$this->section('title')?>
+<?= $this->extend('layouts/admin') ?>
+<?= $this->section('title') ?>
 <i class="fas fa-solid fa-user-graduate"></i>SISWA
-<?=$this->endSection()?>
-<?=$this->section('content')?>
+<?= $this->endSection() ?>
+<?= $this->section('content') ?>
 <div class="row">
     <div class="col">
         <div class="card border-primary">
@@ -24,20 +24,20 @@
                     <?php
                     $no = 0;
                     foreach ($siswa as $row) {
-                        $data = $row['nama_siswa'].",".$row['nis'].",".$row['kelas'].",".$row['tahun_masuk'].",".$row['no_rek'].",".$row['jk'].",".base_url('siswa/edit/'.$row['id_siswa']);
+                        $data = $row['nama_siswa'] . "," . $row['nis'] . "," . $row['kelas'] . "," . $row['tahun_masuk'] . "," . $row['no_rek'] . "," . $row['jk'] . "," . base_url('siswa/edit/' . $row['id_siswa']);
                         $no++;
-                        ?>
+                    ?>
                         <tr>
-                            <td><?=$no?></td>
-                            <td><?=$row['nama_siswa']?></td>
-                            <td><?=$row['nis']?></td>
-                            <td><?=$row['kelas']?></td>
-                            <td><?=$row['tahun_masuk']?></td>
-                            <td><?=$row['no_rek']?></td>
-                            <td><?=$row['jk']?></td>
+                            <td><?= $no ?></td>
+                            <td><?= $row['nama_siswa'] ?></td>
+                            <td><?= $row['nis'] ?></td>
+                            <td><?= $row['kelas'] ?></td>
+                            <td><?= $row['tahun_masuk'] ?></td>
+                            <td><?= $row['no_rek'] ?></td>
+                            <td><?= $row['jk'] ?></td>
                             <td>
-                                <a href="#" class="btn btn-warning" data-siswa="<?=$data?>" data-toggle="modal" data-target="#ModalSiswa"><i class="fas fa-edit"></i></a>
-                                <a href="<?=base_url('siswa/delete/'.$row['id_siswa'])?>" onclick = "return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
+                                <a href="#" class="btn btn-warning" data-siswa="<?= $data ?>" data-toggle="modal" data-target="#ModalSiswa"><i class="fas fa-edit"></i></a>
+                                <a href="<?= base_url('siswa/delete/' . $row['id_siswa']) ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php
@@ -55,8 +55,8 @@
                         <span aria-hidden="true">&times;</span>
                     </div>
                     <form id="form" action="" method="post">
-                    <div class="modal-body">
-                    <div class="form-group">
+                        <div class="modal-body">
+                            <div class="form-group">
                                 <label for="nama_siswa" class="form-label">Nama Siswa</label>
                                 <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" required>
                             </div>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label for="kelas" class="form-label">Kelas</label>
                                 <select name="kelas" id="kelas" class="form-control" required>
-                                    <option value="">==> Pilih Kelas Anda <==</option>
+                                    <option value="">==> Pilih Kelas Anda <==< /option>
                                     <option value="XII RPL 1">XII RPL 1</option>
                                     <option value="XII RPL 2">XII RPL 2</option>
                                     <option value="XII MM 1">XII MM 1</option>
@@ -102,21 +102,21 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
+                        <div class="modal-footer">
                         <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-solid fa-arrow-left"></i></button>
                     </div>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>
-    <?php if(!empty(session()->getFlashdata('message'))):?>
-        <div class="alert alert-success">
+</div>
+<?php if (!empty(session()->getFlashdata('message'))) : ?>
+    <div class="alert alert-success">
         <?php echo session()->getFlashdata('message'); ?>
     </div>
-    <?php endif ?>
+<?php endif ?>
 </div>
 <?= $this->endSection() ?>
 <?= $this->section("script") ?>
