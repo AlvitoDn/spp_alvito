@@ -35,7 +35,7 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home::index',['filter' => 'auth']);
 
 // ROUTES FOR PETUGAS
 $routes->get('/petugas', 'Petugas::index');
@@ -44,10 +44,21 @@ $routes->add('/spetugas','Petugas::save');
 $routes->add('/petugas/edit/(:segment)','Petugas::edit/$1');
 
 // ROUTES FOR SISWA
-$routes->get('/siswa','Siswa::index');
+$routes->get('/siswa','Siswa::index',['filter' => 'auth']);
 $routes->get('/siswa/delete/(:segment)','Siswa::delete/$1');
 $routes->add('/ssiswa','Siswa::save');
 $routes->add('/siswa/edit/(:segment)','Siswa::edit/$1');
+
+// Routes for Jenis Pembayaran
+$routes->get('/jenis','Jenis::index',['filter' => 'auth']);
+$routes->get('/jenis/delete/(:segment)','Jenis::delete/$1');
+$routes->add('/sjenis','Jenis::save');
+$routes->add('/jenis/edit/(:segment)','Jenis::edit/$1');
+
+// Routes for Login
+$routes->get('/login','Login::index');
+$routes->add('/plogin','Login::login');
+$routes->get('/logout','Login::logout');
 
 /*
  * --------------------------------------------------------------------

@@ -1,6 +1,6 @@
 <?= $this->extend('layouts/admin') ?>
 <?= $this->section('title') ?>
-<i class="fas fa-solid fa-user-police"></i>Petugas
+<b><i class="fas fa-solid fa-user"></i>  Petugas</b>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="row">
@@ -10,7 +10,7 @@
                 <a href="#" class="btn btn-outline-light" data-petugas="" data-target="#ModalPetugas" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Data Petugas</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                     <tr>
                         <th>NO.</th>
                         <th>Nama</th>

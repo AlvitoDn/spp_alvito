@@ -36,6 +36,7 @@
                 <h6 class="collapse-header">Pengguna</h6>
                 <a class="collapse-item" href="/siswa">Siswa</a>
                 <a class="collapse-item" href="/petugas">Petugas</a>
+                <a class="collapse-item" href="/jenis">Jenis Pembayaran</a>
             </div>
         </div>
     </li>

@@ -1,13 +1,13 @@
 <?= $this->extend('layouts/admin') ?>
 <?= $this->section('title') ?>
-<b></b><i class="fas fa-solid fa-user-graduate"></i>Siswa
+<b><i class="fas fa-solid fa-user-graduate"></i>  Siswa</b>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="row">
     <div class="col">
         <div class="card border-primary">
             <div class="card-header bg-primary">
-                <a href="#" class="btn btn-outline-light" data-siswa="" data-target="#ModalSiswa" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i>Tambah Data Siswa</a>
+                <a href="#" class="btn btn-outline-light" data-siswa="" data-target="#ModalSiswa" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Data Siswa</a>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-striped">
