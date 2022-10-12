@@ -49,8 +49,8 @@
         <div class="modal fade" id="ModalPetugas" tab-index="-1" aria-hidden="true" aria-labelledby="ModalPetugasLabel">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Input Data Petugas</h5>
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Input Data Petugas</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         <span aria-hidden="true">&times;</span>
                     </div>
@@ -127,6 +127,7 @@
                 $("#jabatan").val(barisdata[5]).change();
                 $("#hak_akses").val(barisdata[6]).change();
                 $("#form").attr('action', barisdata[7]);
+                $("#ubahpassword").show();
             } else {
                 $("#nama_petugas").val('');
                 $("#username").val('');
@@ -135,6 +136,7 @@
                 $("#jabatan").val('').change();
                 $("#hak_akses").val('').change();
                 $("#form").attr('action', '/spetugas');
+                $("#ubahpassword").hide();
             }
         });
     })

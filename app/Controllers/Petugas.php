@@ -61,4 +61,8 @@ class Petugas extends BaseController{
         return redirect('petugas');
     }
 
+    public function register()
+    {
+        return view('tampil_register');
+    }
 }

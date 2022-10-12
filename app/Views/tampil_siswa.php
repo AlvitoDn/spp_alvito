@@ -49,8 +49,8 @@
         <div class="modal fade" id="ModalSiswa" tab-index="-1" aria-hidden="true" aria-labelledby="ModalSiswaLabel">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Input Data Siswa</h5>
+                    <div class="modal-header bg-primary">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Input Data Siswa</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         <span aria-hidden="true">&times;</span>
                     </div>

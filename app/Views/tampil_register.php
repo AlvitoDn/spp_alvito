@@ -22,8 +22,14 @@
     <link href="<?=base_url()?>/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
-<body class="bg-gradient-primary">
+<style>
+    body{
+        height: 100%;
+        background-image: url('mountain.jpg');
+        background-size: cover;
+    }
+</style>
+<body>
 
     <div class="container">
 
@@ -37,48 +43,43 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
-                                    </div>
+                            <form class="user" action="pregister" method="POST">
+                                <div class="form-group">
+                                        <input type="text" class="form-control form-control-user" id="nama_petuagas" name="nama_petugas" placeholder="Your Full Name....">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="text" class="form-control form-control-user" id="username" name="username"
+                                        placeholder="username.... ">
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" id="no_hp" name="no_hp"
+                                        placeholder="Your Phone Number.... ">
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                </div>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                                <p class="text-dark text-center">Required!</p>
+                                <div class="form-group">
+                                <select name="jabatan" id="jabatan" class="form-control" required>
+                                    <option value="">Pilih Jabatan</option>
+                                    <option value="KEPALA SEKOLAH">Kepala Sekolah</option>
+                                    <option value="WALI KELAS">Wali Kelas</option>
+                                    <option value="TELLER">Teller</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select name="hak_akses" id="hak_akses" class="form-control" required>
+                                    <option value="">Pilih Hak Akses Anda</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="KASIR">KASIR</option>
+                                </select>
+                            </div>
+                                <button type="submit" class="btn btn-primary btn-user btn-block">Register</button>
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
-                            </div>
-                            <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="/login">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>

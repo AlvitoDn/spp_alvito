@@ -36,7 +36,6 @@
                 <h6 class="collapse-header">Pengguna</h6>
                 <a class="collapse-item" href="/siswa">Siswa</a>
                 <a class="collapse-item" href="/petugas">Petugas</a>
-                <a class="collapse-item" href="/jenis">Jenis Pembayaran</a>
             </div>
         </div>
     </li>
@@ -50,8 +49,8 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Transaksi</h6>
-                <a class="collapse-item" href="/jenisbayar">Jenis Pembayaran</a>
-                <a class="collapse-item" href="/bayar">Pembayaran SPP</a>
+                <a class="collapse-item" href="/jenis">Jenis Pembayaran</a>
+                <a class="collapse-item" href="/bayar">Pembayaran </a>
             </div>
         </div>
     </li>

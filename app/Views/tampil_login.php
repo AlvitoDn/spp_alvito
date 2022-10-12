@@ -20,7 +20,15 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<style>
+    body{
+        height: 100%;
+        background-size: cover;
+        background-image: url('/mountain.jpg');
+    }
+</style>
+
+<body>
 
     <div class="container mt-5">
 
@@ -41,7 +49,7 @@
                                     </div>
                                     <?php if (!empty(session()->getFlashdata('error'))) : ?>
                                         <div class="alert alert-success">
-                                            <?php session()->getFlashdata('error'); ?>
+                                            <?php echo session()->getFlashdata('error'); ?>
                                         </div>
                                     <?php endif ?>
                                     <form class="user" action="plogin" method="POST">

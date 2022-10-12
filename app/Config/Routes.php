@@ -35,31 +35,38 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index',['filter' => 'auth']);
+$routes->get('/', 'Home::index',['filter'=>'auth']);
+$routes->get('/dashboard', 'Home::dashboard',['filter'=>'auth']);
 
 // ROUTES FOR PETUGAS
-$routes->get('/petugas', 'Petugas::index');
+$routes->get('/petugas','Petugas::index',['filter' => 'auth']);
 $routes->get('/petugas/delete/(:segment)','Petugas::delete/$1');
-$routes->add('/spetugas','Petugas::save');
-$routes->add('/petugas/edit/(:segment)','Petugas::edit/$1');
+$routes->add('/spetugas','Petugas::save',['filter' => 'auth']);
+$routes->add('/petugas/edit/(:segment)','Petugas::edit/$1',['filter' => 'auth']);
 
 // ROUTES FOR SISWA
 $routes->get('/siswa','Siswa::index',['filter' => 'auth']);
-$routes->get('/siswa/delete/(:segment)','Siswa::delete/$1');
-$routes->add('/ssiswa','Siswa::save');
-$routes->add('/siswa/edit/(:segment)','Siswa::edit/$1');
+$routes->get('/siswa/delete/(:segment)','Siswa::delete/$1',['filter' => 'auth']);
+$routes->add('/ssiswa','Siswa::save',['filter' => 'auth']);
+$routes->add('/siswa/edit/(:segment)','Siswa::edit/$1',['filter' => 'auth']);
 
 // Routes for Jenis Pembayaran
 $routes->get('/jenis','Jenis::index',['filter' => 'auth']);
-$routes->get('/jenis/delete/(:segment)','Jenis::delete/$1');
-$routes->add('/sjenis','Jenis::save');
-$routes->add('/jenis/edit/(:segment)','Jenis::edit/$1');
+$routes->get('/jenis/delete/(:segment)','Jenis::delete/$1',['filter' => 'auth']);
+$routes->add('/sjenis','Jenis::save',['filter' => 'auth']);
+$routes->add('/jenis/edit/(:segment)','Jenis::edit/$1',['filter' => 'auth']);
 
 // Routes for Login
 $routes->get('/login','Login::index');
-$routes->add('/plogin','Login::login');
+$routes->add('plogin','Login::login');
 $routes->get('/logout','Login::logout');
 
+// Routes For Register
+$routes->get('/register','Register::index');
+$routes->add('/pregister','Register::save');
+
+// Routes for Transaksi
+$routes->get('/bayar','TransaksiController::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
