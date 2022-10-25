@@ -8,5 +8,5 @@ class DetailModel extends Model{
     // Uncomment below if you want add primary key
     protected $primaryKey = 'id_detail';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['id_transaksi','id_detail_pemmbayaran','bulan_dibayar'];
+    protected $allowedFields = ['id_transaksi','id_detail_pembayaran','bulan_dibayar'];
 }

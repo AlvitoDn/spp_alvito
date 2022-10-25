@@ -40,22 +40,29 @@ class TransaksiController extends BaseController{
             'Mei'=>'',
             'Juni'=>''
         );
-        $no_rek = $this->request->getPost('no_rek');
-        $data_siswa = $this->siswa->where('no_rek',$no_rek)->first();
-        $sel = $this->db->table('tbsiswa a, jenis_pembayaran b, tbtransaksi c, detail_transaksi d');
-        $where = "a.tahun_masuk = b.tahun_ajaran AND a.id_siswa = c.id_siswa AND b.id_jenis_pembayaran = d.id_jenis_pembayaran AND c.id_transaksi = d.id_transaksi AND a.id_siswa = ".$data_siswa['id_siswa'];
-        $sel->where($where);
-        $query = $sel->get();
-        foreach($query->getResult() as $row){
-            foreach ($bulan as $id => $val) {
-                if ($id == $row->bulan_dibayar) {
-                    $bulan[$id] = 1;
+        if ($this->request->getPost('no_rek')!=null) {
+            $no_rek = $this->request->getPost('no_rek');
+            $data_siswa = $this->siswa->where('no_rek',$no_rek)->first();
+            $sel = $this->db->table('tbsiswa a, jenis_pembayaran b, tbtransaksi c, detail_transaksi d');
+            if ($data_siswa!=null) {
+                $where = "a.tahun_masuk = b.tahun_ajaran AND a.id_siswa = c.id_siswa AND b.id_jenis_pembayaran = d.id_jenis_pembayaran AND c.id_transaksi = d.id_transaksi AND a.id_siswa = ".$data_siswa['id_siswa'];
+                $sel->where($where);
+                $query = $sel->get();
+                foreach($query->getResult() as $row){
+                    foreach ($bulan as $id => $val) {
+                        if ($id == $row->bulan_dibayar) {
+                            $bulan[$id] = 1;
+                        }
+                    }
                 }
             }
+            $data["spp"] = $bulan;
+            $data["siswa"] = $data_siswa;
+            return view('cari_view',$data);
+        }else {
+            return view("cari_view");
         }
-        $data["spp"] = $bulan;
-        $data["siswa"] = $data_siswa;
-        return view('cari_view',$data);
+        
 
     }
 }
