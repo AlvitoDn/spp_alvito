@@ -31,7 +31,7 @@
                                 <tr>
                                     <td><?= $no ?></td>
                                     <td><?= $id ?></td>
-                                    <td><?= $val == 1 ? "<p class='text-success'>Lunas</p>" : "<a href='/bayar/$id/$siswa[id_siswa]' class='btn btn-info'>Bayar Sekarang</a>" ?></td>
+                                    <td><?= $val == 0 ? "<p class='text-success'>Lunas</p>" : "<a href='/bayar/$id/$siswa[id_siswa]/$val' class='btn btn-info'>Bayar Sekarang</a>" ?></td>
                                 </tr>
                             <?php
                             }
