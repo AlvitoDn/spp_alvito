@@ -6,6 +6,7 @@ use App\Models\TransaksiModel;
 use App\Models\DetailModel;
 use App\Models\SiswaModel;
 use App\Models\JenisModel;
+use App\Models\PetugasModel;
 use CodeIgniter\Controller;
 
 class TransaksiController extends BaseController
@@ -18,6 +19,7 @@ class TransaksiController extends BaseController
         $this->siswa = new SiswaModel();
         $this->jenis = new JenisModel();
         $this->detail = new DetailModel();
+        $this->petugas = new PetugasModel();
         $this->session = session();
         $this->db = \Config\Database::connect();
     }
@@ -40,17 +42,21 @@ class TransaksiController extends BaseController
                 $query = $sel->get();
                 foreach ($query->getResult() as $row) {
                     $seltrans = $this->db->table('tbtransaksi a, detail_transaksi b');
-                    $wheretrans = "a.id_transaksi = b.id_transaksi AND a.id_siswa=".$row->id_siswa." 
-                    and b.id_jenis_pembayaran=".$row->id_jenis_pembayaran;
+                    $wheretrans = "a.id_transaksi = b.id_transaksi AND a.id_siswa=".$row->id_siswa." and b.id_jenis_pembayaran=".$row->id_jenis_pembayaran;
                     $seltrans->where($wheretrans);
                     $hasil = $seltrans->countAllResults();
                     if ($hasil >  0) {
+                        $hTrans = $seltrans->get();
+                        foreach($hTrans->getResult() as $row1) {
+                            $id_transaksi=$row1->id_transaksi;
+                        }
                         $bulan[$row->nama_transaksi] = 0;
                     } else {
                         $bulan[$row->nama_transaksi] = $row->id_jenis_pembayaran;
                     }
                 }
             }
+            $data["id_transaksi"] = $id_transaksi;
             $data["spp"] = $bulan;
             $data["siswa"] = $data_siswa;
             return view('cari_view', $data);
@@ -75,8 +81,21 @@ class TransaksiController extends BaseController
         return redirect()->to("/caritagihan?no_rek=".$siswas['no_rek']);
     }
 
-    public function bill()
+    public function bill($id)
     {
-        return view("bill");
+        $seltrans = $this->db->table("tbtransaksi a, detail_transaksi b, tbsiswa c, tbpetugas d");
+        $wheretrans = "a.id_transaksi = b.id_transaksi and a.id_siswa = c.id_siswa and d.id_petugas = a.id_petugas and a.id_transaksi = '$id'";
+
+        $seltrans->where($wheretrans);
+        $q = $seltrans->get();
+        foreach ($q->getResult() as $row) {
+            $kelas = $row->kelas;
+            $nama_siswa = $row->nama_siswa;
+            $petugas = $row->nama_petugas;
+        }
+        $data["kelas"] = $kelas;
+        $data["nama_siswa"] = $nama_siswa;
+        $data["petugas"] = $petugas;
+        return view("bill",$data);
     }
 }

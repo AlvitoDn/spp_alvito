@@ -36,7 +36,7 @@
                         <img src="<?=base_url()?>/img/smk.jpg" alt="SMKN 1 Ponorogo" height="100px" width="100px">
                     </div>
                     <div class="col-md-4">
-                        <h5>SMKN 1 PONOROGO</h5>
+                        <h5><b>SMKN 1 PONOROGO</b></h5>
                         <h6>Jl Jendral Sudirman No. 10</h6>
                         <h6>Ponorogo, Jawa Timur</h6>
                     </div>
@@ -49,12 +49,12 @@
                         <tr>
                             <td>Nama</td>
                             <td>:</td>
-                            <td>Alvito Dwinova</td>
+                            <td><?=$nama_siswa?></td>
                         </tr>
                         <tr>
                             <td>Kelas</td>
                             <td>:</td>
-                            <td>XII RPL 1</td>
+                            <td><?=$kelas?></td>
                         </tr>
                     </table>
                 </div>
@@ -80,7 +80,7 @@
                         <br>
                         <br>
                         <br>
-                        Nama Petugas
+                        <?=$petugas?>
                     </div>
                 </div>
             </div>

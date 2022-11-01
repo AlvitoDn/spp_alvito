@@ -69,7 +69,7 @@ $routes->add('/pregister','Register::save');
 $routes->get('/bayar','TransaksiController::index');
 $routes->add('/caritagihan','TransaksiController::cari');
 $routes->add('/bayar/(:segment)/(:segment)/(:segment)','TransaksiController::bayar/$1/$2/$3');
-$routes->get('/bill','TransaksiController::bill');
+$routes->get('/bill/(:segment)','TransaksiController::bill/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
