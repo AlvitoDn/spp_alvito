@@ -66,11 +66,17 @@ class TransaksiController extends BaseController
             "id_petugas" =>$this->session->get("id_petugas"),
             "tanggal_bayar" => $tanggal,
         ]);
+        $siswas = $this->siswa->find($id);
         $this->detail->insert([
             "id_transaksi" => $idtrans,
             "bulan_dibayar" => $bulan,
             "id_jenis_pembayaran" => $id_jenis_pembayaran,
         ]);
-        return view('tampil_transaksi');
+        return redirect()->to("/caritagihan?no_rek=".$siswas['no_rek']);
+    }
+
+    public function bill()
+    {
+        return view("bill");
     }
 }
