@@ -32,6 +32,7 @@ class TransaksiController extends BaseController
     public function cari()
     {
         $bulan = array();
+        $trans = array();
         if ($this->request->getPost('no_rek') != null) {
             $no_rek = $this->request->getPost('no_rek');
             $data_siswa = $this->siswa->where('no_rek', $no_rek)->first();
@@ -46,9 +47,14 @@ class TransaksiController extends BaseController
                     $seltrans->where($wheretrans);
                     $hasil = $seltrans->countAllResults();
                     if ($hasil >  0) {
+                        $seltrans = $this->db->table('tbtransaksi a, detail_transaksi b');
+                        $wheretrans = "a.id_transaksi = b.id_transaksi AND a.id_siswa=".$row->id_siswa." and b.id_jenis_pembayaran=".$row->id_jenis_pembayaran;
+                        $seltrans->where($wheretrans);
                         $hTrans = $seltrans->get();
                         foreach($hTrans->getResult() as $row1) {
-                            $id_transaksi=$row1->id_transaksi;
+                            if ($row->id_jenis_pembayaran == $row1->id_jenis_pembayaran) {
+                                $trans[$row->nama_transaksi] = $row1->id_transaksi;
+                            }
                         }
                         $bulan[$row->nama_transaksi] = 0;
                     } else {
@@ -56,7 +62,7 @@ class TransaksiController extends BaseController
                     }
                 }
             }
-            $data["id_transaksi"] = $id_transaksi;
+            $data["trans"] = $trans;
             $data["spp"] = $bulan;
             $data["siswa"] = $data_siswa;
             return view('cari_view', $data);
