@@ -21,6 +21,7 @@
                             <th>No</th>
                             <th>Bulan</th>
                             <th>Status</th>
+                            <th>Detail</th>
                         </tr>
                         <?php
                         $no = 0;
@@ -31,7 +32,8 @@
                                 <tr>
                                     <td><?= $no ?></td>
                                     <td><?= $id ?></td>
-                                    <td><?= $val == 0 ? "<a href='/bill/$trans[$id]' class='btn btn-primary'>Cetak</a>" : "<a href='/bayar/$id/$siswa[id_siswa]/$val' class='btn btn-info'>Bayar Sekarang</a>" ?></td>
+                                    <td><?= $val == 0 ? "<h6 class='text-success'>Lunas</h6>" : "<a href='/bayar/$id/$siswa[id_siswa]/$val' class='btn btn-info'>Bayar Sekarang</a>" ?></td>
+                                    <td><?= $val == 0 ? "<a href='/bill/$trans[$id]' class='btn btn-primary'>Cetak</a>" : "" ?></td>
                                 </tr>
                             <?php
                             }

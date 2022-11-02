@@ -33,8 +33,8 @@ class TransaksiController extends BaseController
     {
         $bulan = array();
         $trans = array();
-        if ($this->request->getPost('no_rek') != null) {
-            $no_rek = $this->request->getPost('no_rek');
+        if ($this->request->getVar('no_rek') != null) {
+            $no_rek = $this->request->getVar('no_rek');
             $data_siswa = $this->siswa->where('no_rek', $no_rek)->first();
             $sel = $this->db->table('tbsiswa a, jenis_pembayaran b');
             if ($data_siswa != null) {
@@ -89,8 +89,8 @@ class TransaksiController extends BaseController
 
     public function bill($id)
     {
-        $seltrans = $this->db->table("tbtransaksi a, detail_transaksi b, tbsiswa c, tbpetugas d");
-        $wheretrans = "a.id_transaksi = b.id_transaksi and a.id_siswa = c.id_siswa and d.id_petugas = a.id_petugas and a.id_transaksi = '$id'";
+        $seltrans = $this->db->table("tbtransaksi a, detail_transaksi b, tbsiswa c, tbpetugas d, jenis_pembayaran e");
+        $wheretrans = "a.id_transaksi = b.id_transaksi and a.id_siswa = c.id_siswa and d.id_petugas = a.id_petugas and a.id_transaksi = '$id' and b.id_jenis_pembayaran = e.id_jenis_pembayaran";
 
         $seltrans->where($wheretrans);
         $q = $seltrans->get();
@@ -98,10 +98,14 @@ class TransaksiController extends BaseController
             $kelas = $row->kelas;
             $nama_siswa = $row->nama_siswa;
             $petugas = $row->nama_petugas;
+            $nominal = $row->nominal;
+            $nama_jenis = $row->nama_transaksi;
         }
         $data["kelas"] = $kelas;
         $data["nama_siswa"] = $nama_siswa;
         $data["petugas"] = $petugas;
+        $data["nominal"] = $nominal;
+        $data["jenis"] = $nama_jenis;
         return view("bill",$data);
     }
 }

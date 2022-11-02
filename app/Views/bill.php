@@ -68,8 +68,8 @@
 
                         <tr>
                             <td>1</td>
-                            <td>SPP</td>
-                            <td>175000</td>
+                            <td><?=$jenis?></td>
+                            <td>Rp <?=number_format($nominal,0,",",".")?></td>
                         </tr>
                     </table>
                 </div>
@@ -100,6 +100,9 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?= base_url() ?>/js/sb-admin-2.min.js"></script>
+    <script>
+        window.print();
+    </script>
 
 </body>
 
