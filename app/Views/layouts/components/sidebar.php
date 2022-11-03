@@ -2,9 +2,9 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-coins"></i>
+            <i class="fas fa-wallet"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SPP Alvito D.</div>
+        <div class="sidebar-brand-text mx-3"> Bank Slebew </div>
     </a>
 
     <!-- Divider -->

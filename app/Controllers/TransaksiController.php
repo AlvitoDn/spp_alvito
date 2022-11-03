@@ -106,6 +106,7 @@ class TransaksiController extends BaseController
         $data["petugas"] = $petugas;
         $data["nominal"] = $nominal;
         $data["jenis"] = $nama_jenis;
+        
         return view("bill",$data);
     }
 }
