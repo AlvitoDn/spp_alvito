@@ -10,33 +10,37 @@
                 <a href="#" class="btn btn-outline-light" data-jenis="" data-target="#ModalJenis" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Data Jenis Pembayaran</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>NO.</th>
-                        <th>Nama Transaksi</th>
-                        <th>Nominal</th>
-                        <th>Tahun Ajaran</th>
-                        <th>Aksi</th>
-                    </tr>
-                    <?php
-                    $no = 0;
-                    foreach ($jenis as $row) {
-                        $data =  $row['nama_transaksi'] . "," . $row['nominal'] . "," . $row['tahun_ajaran'] . "," . base_url('jenis/edit/' . $row['id_jenis_pembayaran']);
-                        $no++;
-                    ?>
+                <table class="table table-bordered table-striped" id="jenis">
+                    <thead>
                         <tr>
-                            <td><?= $no ?></td>
-                            <td><?= $row['nama_transaksi'] ?></td>
-                            <td><?= $row['nominal'] ?></td>
-                            <td><?= $row['tahun_ajaran'] ?></td>
-                            <td>
-                                <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#ModalJenis" data-jenis="<?= $data ?>"><i class="fas fa-edit"></i></a>
-                                <a href="<?= base_url('jenis/delete/' . $row['id_jenis_pembayaran']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
-                            </td>
+                            <th>NO.</th>
+                            <th>Nama Transaksi</th>
+                            <th>Nominal</th>
+                            <th>Tahun Ajaran</th>
+                            <th>Aksi</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($jenis as $row) {
+                            $data =  $row['nama_transaksi'] . "," . $row['nominal'] . "," . $row['tahun_ajaran'] . "," . base_url('jenis/edit/' . $row['id_jenis_pembayaran']);
+                            $no++;
+                        ?>
+                            <tr>
+                                <td><?= $no ?></td>
+                                <td><?= $row['nama_transaksi'] ?></td>
+                                <td><?= $row['nominal'] ?></td>
+                                <td><?= $row['tahun_ajaran'] ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#ModalJenis" data-jenis="<?= $data ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('jenis/delete/' . $row['id_jenis_pembayaran']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -75,9 +79,9 @@
 </div>
 <?php if (!empty(session()->getFlashdata('message'))) : ?>
 
-<div class="alert alert-success">
-    <?php echo session()->getFlashdata('message'); ?>
-</div>
+    <div class="alert alert-success">
+        <?php echo session()->getFlashdata('message'); ?>
+    </div>
 
 <?php endif ?>
 </div>
@@ -101,6 +105,7 @@
                 $("#form").attr('action', '/sjenis');
             }
         });
+        $("#jenis").DataTable();
     })
 </script>
 <?= $this->endSection() ?>

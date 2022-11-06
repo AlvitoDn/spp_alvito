@@ -15,6 +15,7 @@
     <link href="<?=base_url()?>/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="<?=base_url()?>/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
 </head>
 
@@ -76,7 +77,7 @@
                             <span aria-hidden="true"></span>
                         </button>
                     </div>
-                    <div class="modal-body">Jika Anda Sudah Untuk Logout. Silakan Tekan Tombol "Logout" Dibawah.</div>
+                    <div class="modal-body">Jika Anda Sudah Siap Untuk Logout. Silakan Tekan Tombol "Logout" Dibawah.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         <a class="btn btn-primary" href="/logout">Logout</a>
@@ -97,11 +98,15 @@
 
         <!-- Page level plugins -->
         <script src="<?=base_url() ?>/vendor/chart.js/Chart.min.js"></script>
+        <script src="<?=base_url()?>/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <!-- Page level custom scripts -->
         <script src="<?=base_url() ?>/js/demo/chart-area-demo.js"></script>
         <script src="<?=base_url() ?>/js/demo/chart-pie-demo.js"></script>
+        <!-- Tables Page Costum Script -->
+        <script src="<?=base_url()?>/vendor/datatables/jquery.dataTables.min.js"></script>
+        
         <?= $this->renderSection('script') ?>
-</body>
+    </body>
 
 </html>

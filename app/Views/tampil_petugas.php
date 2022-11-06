@@ -1,6 +1,6 @@
 <?= $this->extend('layouts/admin') ?>
 <?= $this->section('title') ?>
-<b><i class="fas fa-solid fa-user"></i>  Petugas</b>
+<b><i class="fas fa-solid fa-user"></i> Petugas</b>
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <div class="row">
@@ -10,39 +10,41 @@
                 <a href="#" class="btn btn-outline-light" data-petugas="" data-target="#ModalPetugas" data-toggle="modal"><i class="fas fa-solid fa-user-plus"></i> Tambah Data Petugas</a>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
-                    <tr>
-                        <th>NO.</th>
-                        <th>Nama</th>
-                        <th>Username</th>
-                        <th>Passsword</th>
-                        <th>NO HP</th>
-                        <th>Jabatan</th>
-                        <th>Hak Akses</th>
-                        <th>Aksi</th>
-                    </tr>
-                    <?php
-                    $no = 0;
-                    foreach ($petugas as $row) {
-                        $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] . "," . base_url('petugas/edit/' . $row['id_petugas']);
-                        $no++;
-                    ?>
+                <table class="table table-bordered table-striped" id="petugas">
+                    <thead>
                         <tr>
-                            <td><?= $no ?></td>
-                            <td><?= $row['nama_petugas'] ?></td>
-                            <td><?= $row['username'] ?></td>
-                            <td><?= $row['password'] ?></td>
-                            <td><?= $row['no_hp'] ?></td>
-                            <td><?= $row['jabatan'] ?></td>
-                            <td><?= $row['hak_akses'] ?></td>
-                            <td>
-                                <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#ModalPetugas" data-petugas="<?= $data ?>"><i class="fas fa-edit"></i></a>
-                                <a href="<?= base_url('petugas/delete/' . $row['id_petugas']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
-                            </td>
+                            <th>NO.</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>NO HP</th>
+                            <th>Jabatan</th>
+                            <th>Hak Akses</th>
+                            <th>Aksi</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($petugas as $row) {
+                            $data = $row['id_petugas'] . "," . $row['nama_petugas'] . "," . $row['username'] . "," . $row['password'] . "," . $row['no_hp'] . "," . $row['jabatan'] . "," . $row['hak_akses'] . "," . base_url('petugas/edit/' . $row['id_petugas']);
+                            $no++;
+                        ?>
+                            <tr>
+                                <td><?= $no ?></td>
+                                <td><?= $row['nama_petugas'] ?></td>
+                                <td><?= $row['username'] ?></td>
+                                <td><?= $row['no_hp'] ?></td>
+                                <td><?= $row['jabatan'] ?></td>
+                                <td><?= $row['hak_akses'] ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#ModalPetugas" data-petugas="<?= $data ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="<?= base_url('petugas/delete/' . $row['id_petugas']) ?>" onclick="return confirm('Apakah kamu yakin ingin menghapus data ini')" class="btn btn-danger"><i class="fas fa-solid fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
                 </table>
             </div>
         </div>
@@ -106,9 +108,9 @@
 </div>
 <?php if (!empty(session()->getFlashdata('message'))) : ?>
 
-<div class="alert alert-success">
-    <?php echo session()->getFlashdata('message'); ?>
-</div>
+    <div class="alert alert-success">
+        <?php echo session()->getFlashdata('message'); ?>
+    </div>
 
 <?php endif ?>
 </div>
@@ -139,6 +141,7 @@
                 $("#ubahpassword").hide();
             }
         });
+        $("#petugas").DataTable();
     })
 </script>
 <?= $this->endSection() ?>
